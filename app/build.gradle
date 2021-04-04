@@ -1,0 +1,97 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        applicationId "com.ns.photosofthisname"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "com.ns.photosofthisname.app.CustomInstrumentationRunner"
+
+        buildConfigField "String", "FLICKR_API_KEY", "\"2955bfa5b55fb4ecf829309a0cf03bcb\""
+        buildConfigField "String", "FLICKR_BASE_URL", "\"https://www.flickr.com/services/rest/\""
+        buildConfigField "String", "FLICKR_IMAGE_BASE_URL", "\"https://live.staticflickr.com/\""
+
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        freeCompilerArgs = ["-Xallow-result-return-type"]
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.core:core-ktx:$core_ktx_version"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "com.google.android.material:material:$material_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+    implementation "androidx.legacy:legacy-support-v4:$legacy_support_v4_version"
+    implementation "androidx.fragment:fragment-ktx:$fragment_ktx_version"
+
+    // Networking library
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp3_version"
+
+    // Koin for Kotlin
+    implementation "org.koin:koin-core:$koin_version"
+    implementation "org.koin:koin-core-ext:$koin_version"
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    implementation "org.koin:koin-androidx-fragment:$koin_version"
+    implementation "org.koin:koin-androidx-ext:$koin_version"
+
+    // Image processor library
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+
+    //---------------------------- TESTING ----------------------------//
+    androidTestImplementation "androidx.test.ext:junit:$junit_x_ext"
+    androidTestImplementation "androidx.test:rules:$testx_rules"
+    androidTestImplementation "android.arch.core:core-testing:$android_arch_core_testing"
+    androidTestImplementation "androidx.test.uiautomator:uiautomator:$uiautomator"
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:$okhttp3_version"
+    androidTestImplementation "org.koin:koin-test:$koin_version"
+    // Espresso dependencies
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_version"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$espresso_version"
+
+    testImplementation "androidx.test.ext:junit:$junit_x_ext"
+    testImplementation "android.arch.core:core-testing:$android_arch_core_testing"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$okhttp3_version"
+    testImplementation "org.koin:koin-test:$koin_version"
+
+
+
+
+
+}
+
+

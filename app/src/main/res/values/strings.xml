@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Photos of This Name</string>
+    <string name="pick_a_contact">Pick a contact</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="name">name</string>
+    <string name="photo">Photo</string>
+
+</resources>
